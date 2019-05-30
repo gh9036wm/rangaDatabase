@@ -1,0 +1,13 @@
+1 - Without using row mapper
+
+public List<Person> findAll() {
+
+        return jdbcTemplate.query("select * from person",
+                new BeanPropertyRowMapper(Person.class));
+    }
+
+reason for using row mapper is to match the name both bean and database
+
+2- for entity in JPA , if the name of java and sql attribute are matched , no need for @Column
+
+3- for JPA we do not need to create table command , JPA does that for us. so remove the "create table " command from data.sql
